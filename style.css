@@ -1,70 +1,132 @@
-*{
-    margin:0;
-    padding:0;
-}
-h1{
-    color:#16DB65;
-    text-decoration: solid;
-}
-body{
-    background-color: #04471C;
-    text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
-.container{
-    height: 70vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+body {
+  background: #04471C;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-.game{
-    height: 60vmin;
-    width: 60vmin;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap:1.5vmin;
+.wrapper {
+  display: flex;
+  width: 90%;
+  max-width: 1200px;
+  background: #033d17;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
 }
 
-.box{
-    height: 18vmin;
-    width: 18vmin;
-    border-radius: 1rem;
-    border: none;
-    box-shadow: 0 0 1rem rgba(0,0,0.01);
-    font-size: 8vmin;
-    color:#04471C;
-    background-color: #16DB65;
+/* Sidebar (left) */
+.sidebar {
+  flex: 1;
+  background: #022c12;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-#reset{
-    padding: 1rem;
-    background-color: #16DB65;
-    border-radius: 1rem;
-    font-size: 1.25rem;
-    border:none;
+.sidebar h1 {
+  color: #16DB65;
+  margin-bottom: 2rem;
 }
 
-#newGame{
-    padding: 1rem;
-    background-color: #16DB65;
-    border-radius: 1rem;
-    font-size: 1.25rem;
-    border:none;
+.mode-container h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
 }
 
-#msg{
-    color:yellow;
-    font-size: 8vmin;
-    
+.mode-container button,
+.controls button {
+  display: block;
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 1rem;
+  background: #16DB65;
+  color: #04471C;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.msg-container{
-    height: 30vmin;
+.mode-container button:hover,
+.controls button:hover {
+  background: #12b856;
+  transform: scale(1.05);
 }
 
-.hide{
-    display: none;
+#msg {
+  font-size: 1.5rem;
+  color: yellow;
+  margin: 1rem 0;
+}
+
+/* Game Section (right) */
+.game-section {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.game {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 1rem; /* space between cells */
+  width: 60vmin;
+  max-width: 500px; /* optional max size */
+  aspect-ratio: 1 / 1; /* keeps grid square */
+  margin: auto;
+}
+
+.box {
+  background: #16DB65;
+  border: none;
+  border-radius: 0.8rem;
+  font-size: 8vmin;
+  font-weight: bold;
+  color: #ffffff; /* O is white by default, use JS classes */
+  cursor: pointer;
+  transition: 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1 / 1; /* perfect square for each cell */
+}
+
+.box:hover {
+  transform: scale(1.05);
+  background: #12b856;
+}
+
+/* O and X Colors */
+.o-move { 
+  color: #ffffff; /* White O */
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+.x-move { 
+  color: #ff5722; /* Red-Orange X */
+  text-shadow: 0 0 8px rgba(255, 87, 34, 0.8);
+}
+/* Winning animation */
+.winner {
+  animation: glow 1s infinite alternate;
+}
+@keyframes glow {
+  0% { background: #fff176; box-shadow: 0 0 15px #ffeb3b; }
+  100% { background: #fdd835; box-shadow: 0 0 25px #ffeb3b; }
 }
